@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Comfortaa', cursive;
+}
+
+body {
+    background: #090716;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.envelope {
+    position: relative;
+    cursor: pointer;
+
+    scale: 1.5;
+    transition: .5s;
+}
+
+.back {
+    position: relative;
+    width: 250px;
+    height: 200px;
+    background-color: #6247aa;
+}
+
+.letter {
+    position: absolute;
+    background-color: #f7f5fb;
+    width: 230px;
+    height: 180px;
+    top: 10px;
+    left: 10px;
+    transition: .2s;
+}
+
+.letter:before,
+.letter:after {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 90px;
+    width: 52px;
+    height: 80px;
+    background: #f10000;
+    border-radius: 50px 50px 0 0;
+
+    animation-name: pulse;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+.letter:before {
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.letter:after {
+    left: 63px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.text {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.front {
+    position: absolute;
+    border-right: 130px solid #815ac0;
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid transparent;
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 120px;
+    z-index: 3;
+}
+
+.front:before {
+    content: "";
+    position: absolute;
+    border-left: 130px solid #815ac0;
+    border-top: 100px solid transparent;
+    border-bottom: 100px solid transparent;
+    height: 0;
+    width: 0;
+    top: -100px;
+    left: -120px;
+}
+
+.front:after {
+    content: "";
+    position: absolute;
+    border-bottom: 105px solid #7251b5;
+    border-left: 125px solid transparent;
+    border-right: 125px solid transparent;
+    height: 0;
+    width: 0;
+    top: -5px;
+    left: -120px;
+}
+
+.top {
+    position: absolute;
+    border-top: 105px solid #9163cb;
+    border-left: 125px solid transparent;
+    border-right: 125px solid transparent;
+    height: 0;
+    width: 0;
+    top: 0;
+    transform-origin: top;
+    transition: .4s;
+}
+
+.envelope:hover .top {
+    transform: rotateX(160deg);
+}
+
+.envelope:hover .letter {
+    transform: translateY(-100px);
+    z-index: 2;
+}
+
+@keyframes pulse {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 1.2;
+    }
+}
