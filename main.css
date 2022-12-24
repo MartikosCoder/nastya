@@ -21,6 +21,14 @@ body {
 
     scale: 1.5;
     transition: .5s;
+
+    box-shadow: 0 0 60px 20px #fff, 0 0 120px 40px #8B008B, 0 0 180px 60px #6247aa;
+    animation-name: shadowPulse;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
 }
 
 .back {
@@ -141,5 +149,15 @@ body {
 
     to {
         scale: 1.2;
+    }
+}
+
+@keyframes shadowPulse {
+    from {
+        box-shadow: 0 0 60px 20px #fff, 0 0 120px 40px #8B008B, 0 0 180px 60px #6247aa;
+    }
+
+    to {
+        box-shadow: 0 0 100px 20px #fff, 0 0 160px 40px #8B008B, 0 0 220px 60px #6247aa;
     }
 }
