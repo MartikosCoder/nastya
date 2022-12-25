@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Comfortaa", cursive;
+}
+
+body {
+  background: #090716;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+body.message {
+  background: radial-gradient(ellipse at bottom, #121b24 0%, #090a0f 100%);
+  overflow: hidden;
+  filter: drop-shadow(0 0 10px white);
+}
+
+.redirect-overlay {
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  background-color: #090716;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.5s;
+}
+
+.redirect-overlay.active {
+  opacity: 1;
+}
+
+.envelope {
+  position: absolute;
+  cursor: pointer;
+  scale: 1.5;
+  transition: 0.75s;
+  box-shadow: 0 0 60px 20px #fff, 0 0 120px 40px #8B008B, 0 0 180px 60px #6247aa;
+  animation-name: shadowPulse;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+.envelope.hidden {
+  transform: translateY(100vh);
+}
+.envelope:hover .top {
+  transform: rotateX(160deg);
+}
+.envelope:hover .letter {
+  transform: translateY(-100px);
+  z-index: 2;
+}
+
+.back {
+  position: relative;
+  width: 250px;
+  height: 200px;
+  background-color: #6247aa;
+}
+
+.letter {
+  position: absolute;
+  background-color: #f7f5fb;
+  width: 230px;
+  height: 180px;
+  top: 10px;
+  left: 10px;
+  transition: 0.2s;
+}
+.letter::before, .letter::after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 90px;
+  width: 52px;
+  height: 80px;
+  background: #f10000;
+  border-radius: 50px 50px 0 0;
+  animation-name: pulse;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+.letter::before {
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+.letter::after {
+  left: 63px;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.text {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.front {
+  position: absolute;
+  border-right: 130px solid #815ac0;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  height: 0;
+  width: 0;
+  top: 0;
+  left: 120px;
+  z-index: 3;
+}
+.front::before {
+  content: "";
+  position: absolute;
+  border-left: 130px solid #815ac0;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  height: 0;
+  width: 0;
+  top: -100px;
+  left: -120px;
+}
+.front::after {
+  content: "";
+  position: absolute;
+  border-bottom: 105px solid #7251b5;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+  height: 0;
+  width: 0;
+  top: -5px;
+  left: -120px;
+}
+
+.top {
+  position: absolute;
+  border-top: 105px solid #9163cb;
+  border-left: 125px solid transparent;
+  border-right: 125px solid transparent;
+  height: 0;
+  width: 0;
+  top: 0;
+  transform-origin: top;
+  transition: 0.4s;
+}
+
+@keyframes pulse {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.2;
+  }
+}
+@keyframes shadowPulse {
+  from {
+    box-shadow: 0 0 60px 20px #fff, 0 0 120px 40px #8B008B, 0 0 180px 60px #6247aa;
+  }
+  to {
+    box-shadow: 0 0 100px 20px #fff, 0 0 160px 40px #8B008B, 0 0 220px 60px #6247aa;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

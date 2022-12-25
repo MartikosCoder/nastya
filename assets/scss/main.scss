@@ -18,7 +18,27 @@ body {
 }
 
 body.message {
-    background: #2A002A;
+    background: radial-gradient(ellipse at bottom, #121b24 0%, #090a0f 100%);
+    overflow: hidden;
+    filter: drop-shadow(0 0 10px white);
+}
+
+.redirect-overlay {
+    width: 100vw;
+    height: 100vh;
+
+    opacity: 0;
+    background-color: #090716;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transition: .5s;
+}
+
+.redirect-overlay.active {
+    opacity: 1;
 }
 
 .envelope {
@@ -35,10 +55,21 @@ body.message {
     animation-direction: alternate;
     animation-iteration-count: infinite;
     animation-play-state: running;
-}
 
-.envelope.hidden {
-    transform: translateY(100vh);
+    &.hidden {
+        transform: translateY(100vh);
+    }
+
+    &:hover {
+        .top {
+            transform: rotateX(160deg);
+        }
+
+        .letter {
+            transform: translateY(-100px);
+            z-index: 2;
+        }
+    }
 }
 
 .back {
@@ -56,36 +87,36 @@ body.message {
     top: 10px;
     left: 10px;
     transition: .2s;
-}
 
-.letter:before,
-.letter:after {
-    position: absolute;
-    content: "";
-    left: 50%;
-    top: 90px;
-    width: 52px;
-    height: 80px;
-    background: #f10000;
-    border-radius: 50px 50px 0 0;
+    &::before,
+    &::after {
+        position: absolute;
+        content: "";
+        left: 50%;
+        top: 90px;
+        width: 52px;
+        height: 80px;
+        background: #f10000;
+        border-radius: 50px 50px 0 0;
 
-    animation-name: pulse;
-    animation-duration: .5s;
-    animation-timing-function: ease-out;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-    animation-play-state: running;
-}
+        animation-name: pulse;
+        animation-duration: .5s;
+        animation-timing-function: ease-out;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        animation-play-state: running;
+    }
 
-.letter:before {
-    transform: rotate(-45deg);
-    transform-origin: 0 100%;
-}
+    &::before {
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
 
-.letter:after {
-    left: 63px;
-    transform: rotate(45deg);
-    transform-origin: 100% 100%;
+    &::after {
+        left: 63px;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+    }
 }
 
 .text {
@@ -105,30 +136,30 @@ body.message {
     top: 0;
     left: 120px;
     z-index: 3;
-}
 
-.front:before {
-    content: "";
-    position: absolute;
-    border-left: 130px solid #815ac0;
-    border-top: 100px solid transparent;
-    border-bottom: 100px solid transparent;
-    height: 0;
-    width: 0;
-    top: -100px;
-    left: -120px;
-}
+    &::before {
+        content: "";
+        position: absolute;
+        border-left: 130px solid #815ac0;
+        border-top: 100px solid transparent;
+        border-bottom: 100px solid transparent;
+        height: 0;
+        width: 0;
+        top: -100px;
+        left: -120px;
+    }
 
-.front:after {
-    content: "";
-    position: absolute;
-    border-bottom: 105px solid #7251b5;
-    border-left: 125px solid transparent;
-    border-right: 125px solid transparent;
-    height: 0;
-    width: 0;
-    top: -5px;
-    left: -120px;
+    &::after {
+        content: "";
+        position: absolute;
+        border-bottom: 105px solid #7251b5;
+        border-left: 125px solid transparent;
+        border-right: 125px solid transparent;
+        height: 0;
+        width: 0;
+        top: -5px;
+        left: -120px;
+    }
 }
 
 .top {
@@ -141,15 +172,6 @@ body.message {
     top: 0;
     transform-origin: top;
     transition: .4s;
-}
-
-.envelope:hover .top {
-    transform: rotateX(160deg);
-}
-
-.envelope:hover .letter {
-    transform: translateY(-100px);
-    z-index: 2;
 }
 
 @keyframes pulse {
