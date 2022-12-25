@@ -67,4 +67,19 @@ body.message .message {
   &.active {
     bottom: 20px;
   }
+
+  p {
+    margin: 10px 0;
+    font-size: 1.2rem;
+  }
+
+  h5 {
+    margin-top: 10px;
+  }
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    margin-top: 20px;
+  }
 }
