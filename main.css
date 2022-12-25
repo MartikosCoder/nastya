@@ -22,11 +22,11 @@ body.message {
 }
 
 .envelope {
-    position: relative;
+    position: absolute;
     cursor: pointer;
 
     scale: 1.5;
-    transition: .5s;
+    transition: .75s;
 
     box-shadow: 0 0 60px 20px #fff, 0 0 120px 40px #8B008B, 0 0 180px 60px #6247aa;
     animation-name: shadowPulse;
@@ -38,7 +38,7 @@ body.message {
 }
 
 .envelope.hidden {
-    scale: 0;
+    transform: translateY(100vh);
 }
 
 .back {
